@@ -1,43 +1,48 @@
 # Simple PHP URL shortener
 
+## TL;DR
+
+This PHP URL shortener is a fork from [Mathias Bynen's shortener ](https://github.com/mathiasbynens/php-url-shortener) tinkered for my own needs and learning purpose.
+
+DRY, minimal code with few features available using GET requests.
+
 ## Installation
 
 1. Download the source code as located within this repository, and upload it to your web server.
-2. Use `database.sql` to create the `redirect` table in a database of choice.
-3. Edit `config.php` and enter your database credentials.
+2. Use `database.sql` to create the `redirect` table in a database of choice. The database user must have at least SELECT/INSERT/UPDATE rights.
+3. Edit `config.php` and enter your database credentials. 
 
 ## Features
 
-* Redirect to Twitter when given a numerical slug, e.g. `http://mths.be/8065633451249664` → `http://twitter.com/mathias/status/8065633451249664`.
-* Redirect to your Twitter account when `@` is used as a slug, e.g. `http://mths.be/@` → `http://twitter.com/mathias`.
-* Redirect to your main website when no slug is entered, e.g. `http://mths.be/` → `http://mathiasbynens.be/`.
-* Redirect to a specific page on your main website when an unknown slug (not in the database) is used, e.g. `http://mths.be/demo/jquery-size` → `http://mathiasbynens.be/demo/jquery-size`.
-* Ignores weird trailing characters (`!`, `"`, `#`, `$`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `-`, `.`, `/`, `@`, `:`, `;`, `<`, `=`, `>`, `[`, `\`, `]`, `^`, `_`, `{`, `|`, `}`, `~`) in slugs — useful when your short URL is run through a crappy link parser, e.g. `http://mths.be/aaa)` → same effect as visiting `http://mths.be/aaa`.
+* Redirect to tweets when given a long numerical slug, e.g. `http://ex.org/8065633451249664` → `http://twitter.com/mathias/status/8065633451249664`.
+* Redirect to xkcd when given a short numerical slug, e.g. `http://ex.org/123` → `http://xkcd.com/123`.
+* Redirect to a Twitter account when `@` is used as a slug, e.g. `http://ex.org/@` → `http://twitter.com/example`.
+* Redirect to the main website when no slug is entered, e.g. `http://ex.org/` → `http://example.org/`.
+* Redirect to a specific page on the main website when an unknown slug is used, e.g. `http://ex.org/demo/jquery` → `http://example.org/demo/jquery`.
+* Uses user-defined custom slugs for special links, e.g. `http://ex.org/li` → `http://linkedin.com/your-account-link`.
+* Ignores weird trailing characters in slugs, e.g. `http://ex.org/aaa)` → same as `http://ex.org/aaa`.
 * Generates short, easy-to-type URLs using only `[a-z]` characters.
-* Doesn’t create multiple short URLs when you try to shorten the same URL. In this case, the script will simply return the existing short URL for that long URL.
+* Doesn’t create multiple short URLs when you try to shorten the same URL : the script will simply return the existing short URL.
+* Counts every access to a link and allows users to retrieve link hits count.
 * DRY, minimal code.
 * Correct, semantic use of the available HTTP status codes.
-* Can be used with Twitter for iPhone. Just go to _Settings_ › _Services_ › _URL Shortening_ › _Custom…_ and enter `http://yourshortener.ext/shorten?url=%@`.
 
-## Favelets / Bookmarklets
+## Future
 
-### Prompt
+* Add a way to retrieve the total number of hits.
+* Add a way to monitor hits to @ and other special URLs.
+* Add a way to retrieve the most hitted link(s).
+* Add a way to set new custom slugs.
+* Add a QR code API using Google API.
+* Add an about page for the shortener.
 
-``` js
-javascript:(function(){var%20q=prompt('URL:');if(q){document.location='http://yourshortener.ext/shorten?url='+encodeURIComponent(q)}}());
-```
-
-### Shorten this URL
-
-``` js
-javascript:(function(){document.location='http://yourshortener.ext/shorten?url='+encodeURIComponent(location.href)}());
-````
-
-## Author
+## Original author
 
 * [Mathias Bynens](http://mathiasbynens.be/)
 
-## Contributors
+## Original contributors
 
 * [Peter Beverloo](http://peter.sh/)
 * [Tomislav Biscan](https://github.com/B-Scan)
+
+## Humble tinkerer
