@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * PHP URL Shortener with some custom slugs.
+ * Twitter slug : automatic link to tweets, @ to account.
+ * xkcd slug : automatic link to xkcd webcomic (just for fun).
+ * 
+ * Source code from https://github.com/mathiasbynens/php-url-shortener.
+ * Tinkered by https://github.com/ThibWeb/php-url-shortener.
+ */
 require 'config.php';
 
 $url = DEFAULT_URL . '/';
@@ -8,16 +15,23 @@ if (isset($_GET['slug'])) {
 
 	$slug = $_GET['slug'];
 
-	if ('@' == $slug) {
+	if ($slug == '@') {
 		$url = 'http://twitter.com/' . TWITTER_USERNAME;
-	} else if (' ' == $slug) { // +
-		$url = 'https://plus.google.com/u/0/' . GOOGLE_PLUS_ID . '/posts';
 	} else {
-
+		// Once @ is checked, all special chars are removed.
 		$slug = preg_replace('/[^a-z0-9]/si', '', $slug);
 
-		if (is_numeric($slug) && strlen($slug) > 8) {
-			$url = 'http://twitter.com/' . TWITTER_USERNAME . '/status/' . $slug;
+		// Less than eight : Slug is xkcd, greater : Tweet.
+		if (is_numeric($slug) && strlen($slug) > 0) {
+			if (strlen($slug) < 5) {
+				$url = 'http://xkcd.com/' . $slug;
+			}
+			else if (strlen($slug) > 8) {
+				$url = 'http://twitter.com/' . TWITTER_USERNAME . '/status/' . $slug;
+			}
+			else {
+				$url = DEFAULT_URL;
+			}
 		} else {
 
 			$db = new MySQLi(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
@@ -34,7 +48,6 @@ if (isset($_GET['slug'])) {
 			}
 
 			$db->close();
-
 		}
 	}
 }
