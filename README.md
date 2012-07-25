@@ -34,7 +34,6 @@ DRY, minimal code with few features available using GET requests.
 * Add a way to retrieve the most hitted link(s).
 * Add a way to set new custom slugs.
 * Add a QR code API using Google API.
-* Add an about page for the shortener.
 
 ## Original author
 
@@ -46,3 +45,5 @@ DRY, minimal code with few features available using GET requests.
 * [Tomislav Biscan](https://github.com/B-Scan)
 
 ## Humble tinkerer
+
+* [Thibaud Colas](https://github.com/ThibWeb)
