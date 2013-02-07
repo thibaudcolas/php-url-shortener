@@ -1,5 +1,13 @@
 RewriteEngine On
 RewriteBase /
+
+# Rewrite "www.example.com -> example.com"
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
 RewriteRule ^shrtn(.*)$ shrtn.php?url=$1 [L,QSA]
 RewriteRule ^stats(.*)$ stats.php?slug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f

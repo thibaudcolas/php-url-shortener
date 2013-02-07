@@ -15,5 +15,8 @@ INSERT INTO `redirect` VALUES ('about', 'https://github.com/thibweb/php-url-shor
 INSERT INTO `redirect` VALUES ('xkcd', 'https://xkcd.com', NOW(), 1);
 INSERT INTO `redirect` VALUES ('smbc', 'http://www.smbc-comics.com', NOW(), 1);
 INSERT INTO `redirect` VALUES ('love', 'https://xkcd.com/99', NOW(), 1);
+INSERT INTO `redirect` VALUES ('regex', 'https://xkcd.com/208', NOW(), 1);
+INSERT INTO `redirect` VALUES ('foaf', 'http://thibaudcolas.fr/foaf.rdf', NOW(), 1);
+INSERT INTO `redirect` VALUES ('connoisseur', 'https://xkcd.com/915', NOW(), 1);
 
 INSERT INTO `redirect` VALUES ('a', 'https://xkcd.com', NOW(), 1);

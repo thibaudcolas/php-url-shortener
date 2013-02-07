@@ -34,6 +34,7 @@ DRY, minimal code with few features available using GET requests.
 * Add a way to retrieve the most hitted link(s).
 * Add a way to set new custom slugs.
 * Add a QR code API using Google API.
+* Add a foaf link
 
 ## Original author
 
