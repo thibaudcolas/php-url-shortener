@@ -1,9 +1,9 @@
 <?php
 /**
  * PHP URL Shortener with some custom slugs.
- * Twitter slug : automatic link to tweets, @ to account.
- * xkcd slug : automatic link to xkcd webcomic (just for fun).
- * 
+ * Twitter slug: automatic link to tweets, @ to account.
+ * xkcd slug: automatic link to xkcd webcomic (just for fun).
+ *
  * Source code from https://github.com/mathiasbynens/php-url-shortener.
  * Tinkered by https://github.com/ThibWeb/php-url-shortener.
  */
