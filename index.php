@@ -52,7 +52,9 @@ if (isset($_GET['slug'])) {
     }
 }
 
-header('Location: ' . $url, null, 301);
+header('Location: ' . $url, NULL, 301);
+
+$attributeValue = htmlspecialchars($url);
 
 ?>
-<meta http-equiv=refresh content="0;URL=<?php echo $url; ?>"><a href="<?php echo $url; ?>">Continue</a><script>location.href='<?php echo $url; ?>'</script>
+<meta http-equiv=refresh content="0;URL=<?php echo $attributeValue ?>"><a href="<?php echo $attributeValue; ?>">Continue</a><script>location.href='<?php echo $attributeValue; ?>'</script>
