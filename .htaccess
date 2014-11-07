@@ -8,8 +8,6 @@ RewriteBase /
   RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
-RewriteRule ^shrtn(.*)$ shrtn.php?url=$1 [L,QSA]
-RewriteRule ^stats(.*)$ stats.php?slug=$1 [L,QSA]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?slug=$1 [L,QSA]
