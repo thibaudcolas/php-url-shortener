@@ -7,12 +7,11 @@
  * Source code from https://github.com/mathiasbynens/php-url-shortener.
  * Tinkered by https://github.com/ThibWeb/php-url-shortener.
  */
-require 'config.php';
-
-$url = DEFAULT_URL . '/';
 
 if (isset($_GET['slug'])) {
+    require 'config.php';
 
+    $url = DEFAULT_URL . '/';
     $slug = $_GET['slug'];
 
     if ($slug == '@') {
@@ -50,11 +49,8 @@ if (isset($_GET['slug'])) {
             $db->close();
         }
     }
+    header('Location: ' . $url, NULL, 301);
 }
-
-header('Location: ' . $url, NULL, 301);
-
-$attributeValue = htmlspecialchars($url);
-
-?>
-<meta http-equiv=refresh content="0;URL=<?php echo $attributeValue ?>"><a href="<?php echo $attributeValue; ?>">Continue</a><script>location.href='<?php echo $attributeValue; ?>'</script>
+else {
+    require 'index.html';
+}
