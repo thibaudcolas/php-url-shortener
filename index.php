@@ -43,7 +43,9 @@ if (isset($_GET['slug'])) {
                 $db->query('UPDATE redirect SET hits = hits + 1 WHERE slug = "' . $escapedSlug . '"');
                 $url = $redirectResult->fetch_object()->url;
             } else {
-                $url = DEFAULT_URL . $_SERVER['REQUEST_URI'];
+                header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+                require '404.html';
+                die;
             }
 
             $db->close();
