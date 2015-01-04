@@ -941,5 +941,5 @@ FileETag None
 <IfModule mod_rewrite.c>
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php?slug=$1 [L,QSA]
+    RewriteRule ^(.*)$ shorten.php?slug=$1 [L,QSA]
 </IfModule>

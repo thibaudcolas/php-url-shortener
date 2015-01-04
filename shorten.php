@@ -8,10 +8,11 @@
  * Tinkered by https://github.com/ThibWeb/php-url-shortener.
  */
 
-if (isset($_GET['slug'])) {
-    require 'config.php';
+require 'config.php';
 
-    $url = DEFAULT_URL . '/';
+$url = DEFAULT_URL . '/';
+
+if (isset($_GET['slug'])) {
     $slug = $_GET['slug'];
 
     if ($slug == '@') {
@@ -54,5 +55,5 @@ if (isset($_GET['slug'])) {
     header('Location: ' . $url, NULL, 301);
 }
 else {
-    require 'index.html';
+    header('Location: ' . $url, NULL, 301);
 }
