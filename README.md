@@ -10,7 +10,7 @@ DRY, minimal code with few features available using GET requests.
 
 1. Download the source code as located within this repository, and upload it to your web server.
 2. Use `database.sql` to create the `redirect` table in a database of choice. The database user must have at least SELECT/INSERT/UPDATE rights.
-3. Edit `config.php` and enter your database credentials. 
+3. Edit `config.php` and enter your database credentials.
 
 ## Features
 
@@ -47,4 +47,4 @@ DRY, minimal code with few features available using GET requests.
 
 ## Humble tinkerer
 
-* [Thibaud Colas](https://github.com/ThibWeb)
+* [Thibaud Colas](https://github.com/thibaudcolas)
